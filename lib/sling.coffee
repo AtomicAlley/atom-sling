@@ -6,7 +6,7 @@ module.exports =
   slingView: null
 
   activate: (state) ->
-    @slingView = new SlingView(state.slingViewState)
+    # @slingView = new SlingView(state.slingViewState)
     # someJSON = { 'name': 'hello', 'dependencies': { 'david': '~3.1.0' }}
     # @parseNPMDependencies(someJSON, alert)
 
