@@ -19,14 +19,15 @@ module.exports =
     slingViewState: @slingView.serialize()
 
   # given manifest, the json contents of package.json,
-  # invoke the callback with the david dependency object
+  # get NPM dependencies and pass them as the argument
+  # to the given callback function
   parseNPMDependencies: (manifest, callback) ->
     david.getDependencies manifest, ((er,deps) =>
       if er
         console.log er
         callback(er)
       else
-        console.log deps
+        console.log "Dependencies: #{JSON.stringify deps}"
         callback(deps)
     )
 
