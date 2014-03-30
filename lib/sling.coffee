@@ -7,8 +7,9 @@ module.exports =
 
   activate: (state) ->
     # @slingView = new SlingView(state.slingViewState)
-    # someJSON = { 'name': 'hello', 'dependencies': { 'david': '~3.1.0' }}
+    # someJSON = { 'name': 'hello', 'dependencies': { 'david': '~3.1.0' }, 'devDependencies': { 'grunt': '0.4.4' }}
     # @parseNPMDependencies(someJSON, alert)
+    # @parseNPMDevDependencies(someJSON, alert)
 
 
   deactivate: ->
@@ -26,5 +27,18 @@ module.exports =
         callback(er)
       else
         console.log deps
+        callback(deps)
+    )
+
+  # given manifest, the json contents of package.json,
+  # get NPM dev dependencies and pass them as the argument
+  # to the given callback function
+  parseNPMDevDependencies: (manifest, callback) ->
+    david.getDependencies manifest, { dev: true }, ((er, deps) =>
+      if er
+        console.log er
+        callback(er)
+      else
+        console.log "Dev Dependencies: #{JSON.stringify deps}"
         callback(deps)
     )
