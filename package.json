@@ -1,0 +1,17 @@
+{
+  "name": "sling",
+  "main": "./lib/sling",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "activationEvents": [
+    "sling:toggle"
+  ],
+  "repository": "https://github.com/atom/sling",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "david": "~3.1.0"
+  }
+}

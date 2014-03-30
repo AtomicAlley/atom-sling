@@ -1,0 +1,16 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable sling': 'sling:toggle'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'sling'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'sling:toggle' }
+      ]
+    ]
+  }
+]
