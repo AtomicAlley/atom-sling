@@ -12,6 +12,12 @@ module.exports =
     # @parseUpdatedNPMDevDependencies(someJSON, alert)
     # @parseNPMDependencies(someJSON, alert)
     # @parseNPMDevDependencies(someJSON, alert)
+    projectManifest = require @getPackagePath()
+    if projectManifest
+      @parseUpdatedNPMDependencies projectManifest, alert
+      @parseUpdatedNPMDevDependencies projectManifest, alert
+    else
+      console.log 'there is no package.json, bye'
 
 
   deactivate: ->
@@ -71,3 +77,10 @@ module.exports =
         console.log "Dev Dependencies: #{JSON.stringify deps}"
         callback(deps)
     )
+
+  # find path of package.json for the project of the atom window
+  getPackagePath: ->
+    projectPath = atom.project.getPath()
+    # assuming for now that package.json is either in the top-level
+    # directory or else it simply doesn't exist, make this more robust later
+    packagePath = projectPath + '/package.json'
